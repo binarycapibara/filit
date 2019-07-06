@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: drafe <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/06 21:18:23 by drafe            ###   ########.fr       */
+/*   Updated: 2019/06/29 18:09:19 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 **		printf("\n***vvv***%d***vvv***", sh_nb);
 **		while (i < 4)
 **		{
-**			printf("\nt[%d].x[%d]=%d y[%d]=%d", sh_nb,
+**			printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,
 **			i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
 **			i++;
 **		}
