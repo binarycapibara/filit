@@ -1,46 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/07 19:43:21 by fjenae            #+#    #+#             */
-/*   Updated: 2019/07/07 21:22:39 by fjenae           ###   ########.fr       */
+/*   Created: 2019/05/26 05:19:54 by fjenae            #+#    #+#             */
+/*   Updated: 2019/05/29 17:59:28 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
-static		ft_box_calc (int	**N, char		***box)
+long	ft_sqrt(long n)
 {
-	N = 
+	long	i;
 
-
-
-}
-
-
-
-
-
-
-
-
-
-
-ft_core_algo(int	*N, char	**sh_coord)
-{
-	char		**box[0][0];
-
-	ft_box_calc(&N, &box);
-
-
-
-
-
-
-
-
-
+	i = 1;
+	if (n == 0)
+		return (0);
+	if (n == 1)
+		return (1);
+	while (i < (n / 2))
+	{
+		if ((i * i) == n)
+			return (i);
+		i++;
+	}
+	return (0);
 }

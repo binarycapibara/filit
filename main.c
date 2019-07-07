@@ -6,7 +6,7 @@
 /*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/07 18:45:21 by fjenae           ###   ########.fr       */
+/*   Updated: 2019/07/07 21:14:11 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 	int				nl_nb;
 	int				sh_nb;
 	int				i;
+	int				tmp;
 
 	i = 0;
 	sh_nb = 0;
@@ -124,20 +125,21 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 		}
 		i++;
 	}
-	sh_nb = 0;
- 	while (sh_nb < 19)
-	{
-		i = 0;
-		printf("\n***vvv***%d***vvv***", sh_nb);
-		while (i < 4)
-		{
-			printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,\
-			i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
-			i++;
-		}
-		sh_nb++;
-	}
-	return (0);
+	tmp = sh_nb;
+	// sh_nb = 0;
+ 	// while (sh_nb <= tmp)
+	// {
+	// 	i = 0;
+	// 	printf("\n***vvv***%d***vvv***", sh_nb);
+	// 	while (i < 4)
+	// 	{
+	// 		printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,\
+	// 		i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
+	// 		i++;
+	// 	}
+	// 	sh_nb++;
+	// }
+	return (tmp);
 }
 
 /* **************************************************************************
@@ -154,6 +156,7 @@ int					ft_tetra_read(char *source_f)
 	char			*buff;
 	int				bytes;
 	unsigned int	fd;
+	int				N;
 
 	bytes = 0;
 	ptr = all_shapes;
@@ -167,7 +170,8 @@ int					ft_tetra_read(char *source_f)
 	if (bytes < 0)
 		return (-1);
 	buff[bytes] = '\0';
-	ft_save_shape(buff, ptr);
+	N = ft_save_shape(buff, ptr);
+	ft_putnbr(N);
 	if ((close(fd)) < 0)
 	{
 		ft_putstr_fd("close error\n", 2);
