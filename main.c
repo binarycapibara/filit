@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/07 15:35:14 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/07 15:49:40 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "./libft/libft.h"
+#include "libft/libft.h"
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -107,8 +107,8 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 			}
 			else
 			{
-				all_sh[sh_nb].y[p_nb] = all_sh[sh_nb].y[p_nb - 1] + ft_y_c(s, i);
 				all_sh[sh_nb].x[p_nb] = all_sh[sh_nb].x[p_nb - 1] + ft_x_c(s, i);
+				all_sh[sh_nb].y[p_nb] = all_sh[sh_nb].y[p_nb - 1] + ft_y_c(s, i);
 			}
 			p_nb++;
 		}
