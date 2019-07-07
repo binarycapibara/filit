@@ -3,17 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: drafe <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/06/29 18:09:19 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/07 15:35:14 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "fillit.h"
 #include "./libft/libft.h"
 #include <fcntl.h>
 #include <stdio.h>
+
+/* **************************************************************************
+**	----int	ft_y_c(char *s, int i)----
+**	Function generate offset from previous point for y
+** ************************************************************************** 
+*/
 
 int					ft_x_c(char *s, int i)
 {
@@ -28,6 +34,12 @@ int					ft_x_c(char *s, int i)
 	return (res);
 }
 
+/* **************************************************************************
+**	----int	ft_y_c(char *s, int i)----
+** 	Function generate offset from previous point for y
+** **************************************************************************
+*/
+
 int					ft_y_c(char *s, int i)
 {
 	int				res;
@@ -41,6 +53,37 @@ int					ft_y_c(char *s, int i)
 		res = 1;
 	return (res);
 }
+
+/* **************************************************************************
+**	----int	ft_save_shape(char *s, t_tetris *all_sh)----
+**
+**	t_tetris *all_sh - 26 empty shapes structures;
+**
+**	char *s - buff string readed from input file;
+**
+**	p_nb - shape point_number, every shape has from 0 to 3 point_numbers;
+**
+**	sh_nb - shape_number(0..26) in t_tetris	all_shapes[26];
+**
+**	nl_nb - new_line_number(0..4) help us count sh_nb;
+** ------------------------------------------------------------------------
+**
+**	----Code for print coordinates----
+**	sh_nb = 0;
+** 	while (sh_nb < 19)
+**	{
+**		i = 0;
+**		printf("\n***vvv***%d***vvv***", sh_nb);
+**		while (i < 4)
+**		{
+**			printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,\
+**			i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
+**			i++;
+**		}
+**		sh_nb++;
+**	}
+** **************************************************************************
+*/
 
 int					ft_save_shape(char *s, t_tetris *all_sh)
 {
@@ -80,27 +123,18 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 	return (0);
 }
 
-/*
-**	sh_nb = 0;
-** 	while (sh_nb < 19)
-**	{
-**		i = 0;
-**		printf("\n***vvv***%d***vvv***", sh_nb);
-**		while (i < 4)
-**		{
-**			printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,
-**			i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
-**			i++;
-**		}
-**		sh_nb++;
-**	}
+/* **************************************************************************
+**	----int	ft_tetra_read(char *source_f)----
+**	Function read 546 bytes from input_file to string *buff
+**  and send *buff with pointer to empty array of structures
+** **************************************************************************
 */
 
 int					ft_tetra_read(char *source_f)
 {
 	static t_tetris	all_shapes[26];
 	t_tetris		*ptr;
-	char			*tmp;
+	char			*buff;
 	int				bytes;
 	unsigned int	fd;
 
@@ -111,13 +145,12 @@ int					ft_tetra_read(char *source_f)
 		ft_putstr_fd("read error\n", 2);
 		exit(0);
 	}
-	tmp = (char*)ft_strnew(521);
-	bytes = read(fd, tmp, 520);
+	buff = (char*)ft_strnew(546);
+	bytes = read(fd, buff, 545);
 	if (bytes < 0)
 		return (-1);
-	tmp[bytes] = '\0';
-
-	ft_save_shape(tmp, ptr);
+	buff[bytes] = '\0';
+	ft_save_shape(buff, ptr);
 	if ((close(fd)) < 0)
 	{
 		ft_putstr_fd("close error\n", 2);
@@ -135,6 +168,3 @@ int					main(int argc, char **argv)
 	}
 	ft_tetra_read(argv[1]);
 }
-/*
-**  1 line with 8 chars with Line Feed
-*/
