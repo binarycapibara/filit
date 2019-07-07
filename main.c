@@ -6,7 +6,7 @@
 /*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/07 18:23:27 by fjenae           ###   ########.fr       */
+/*   Updated: 2019/07/07 18:45:21 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,19 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 			}
 		}
 		i++;
+	}
+	sh_nb = 0;
+ 	while (sh_nb < 19)
+	{
+		i = 0;
+		printf("\n***vvv***%d***vvv***", sh_nb);
+		while (i < 4)
+		{
+			printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,\
+			i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
+			i++;
+		}
+		sh_nb++;
 	}
 	return (0);
 }
