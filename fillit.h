@@ -6,7 +6,7 @@
 /*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 15:07:55 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/07 15:49:59 by fjenae           ###   ########.fr       */
+/*   Updated: 2019/07/07 22:00:19 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,8 @@ typedef struct		s_tetris
 	int			x[4];
 	int			y[4];
 }					t_tetris;
+
+void ft_core_algo(int	**N, t_tetris *sh_coord);
+
 
 #endif

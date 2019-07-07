@@ -6,7 +6,7 @@
 /*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/07 21:14:11 by fjenae           ###   ########.fr       */
+/*   Updated: 2019/07/07 21:58:18 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ int					ft_tetra_read(char *source_f)
 		return (-1);
 	buff[bytes] = '\0';
 	N = ft_save_shape(buff, ptr);
-	ft_putnbr(N);
+	ft_core_algo(&N, ptr);
 	if ((close(fd)) < 0)
 	{
 		ft_putstr_fd("close error\n", 2);
