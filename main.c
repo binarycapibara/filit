@@ -6,7 +6,7 @@
 /*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/08 14:47:59 by fjenae           ###   ########.fr       */
+/*   Updated: 2019/07/08 16:06:01 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,19 +126,19 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 		i++;
 	}
 	tmp = sh_nb;
-	sh_nb = 0;
- 	while (sh_nb <= tmp)
-	{
-		i = 0;
-		printf("\n***vvv***%d***vvv***", sh_nb);
-		while (i < 4)
-		{
-			printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,\
-			i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
-			i++;
-		}
-		sh_nb++;
-	}
+	// sh_nb = 0;
+ 	// while (sh_nb <= tmp)
+	// {
+	// 	i = 0;
+	// 	printf("\n***vvv***%d***vvv***", sh_nb);
+	// 	while (i < 4)
+	// 	{
+	// 		printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,\
+	// 		i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
+	// 		i++;
+	// 	}
+	// 	sh_nb++;
+	// }
 	return (tmp);
 }
 
@@ -156,7 +156,8 @@ int					ft_tetra_read(char *source_f)
 	char			*buff;
 	int				bytes;
 	unsigned int	fd;
-	int				N;
+	int				*N;
+	int				k;
 
 	bytes = 0;
 	ptr = all_shapes;
@@ -170,8 +171,9 @@ int					ft_tetra_read(char *source_f)
 	if (bytes < 0)
 		return (-1);
 	buff[bytes] = '\0';
-	N = ft_save_shape(buff, ptr);
-	// ft_core_algo(&N, ptr);
+	k = ft_save_shape(buff, ptr);
+	N = &k;
+	ft_algo(N, ptr);
 	if ((close(fd)) < 0)
 	{
 		ft_putstr_fd("close error\n", 2);

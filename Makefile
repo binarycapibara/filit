@@ -6,7 +6,7 @@
 #    By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 20:00:16 by drafe             #+#    #+#              #
-#    Updated: 2019/07/08 14:46:05 by fjenae           ###   ########.fr        #
+#    Updated: 2019/07/08 16:03:59 by fjenae           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,15 @@ NAME = fillit
 
 HEADERS = fillit.h\
 
-SRC = main.c
+SRC = main.c algorithm.c
 
-OBJ = main.o
+OBJ = main.o algorithm.o
 
 all: $(NAME)
 
 $(NAME):
-	@$(CC) $(CFLAGS) -I $(HEADERS) -o main.o -c $(SRC)
-	@$(CC) -o $(NAME) $(OBJ) -I $(HEADERS) -L libft/ -lft
+	@$(CC) -c -I $(HEADERS) $(CFLAGS) $(SRC)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L libft/ -lft
 
 clean:
 	@rm -rf $(OBJ)
