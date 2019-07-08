@@ -6,7 +6,7 @@
 /*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:43:21 by fjenae            #+#    #+#             */
-/*   Updated: 2019/07/08 17:53:50 by fjenae           ###   ########.fr       */
+/*   Updated: 2019/07/08 19:33:22 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ static void		ft_box_calc(int	**N)  //, char		**box)
 {
 	int		res;
 
-	res = *N;
+	res = **N;
+	printf("%d\n", res);
+	printf("\n-------------------------------------------");
 	res = res * 4;
-	// res = ft_sqrt(res);
+	res = ft_sqrt(16);
 	// *N = res;
-	printf("%d", res);
+	printf("%d\n", res);
+
+	**N = res;
 	// box[0][0] = 'A';
 	// return ;
 }
@@ -49,5 +53,5 @@ void ft_algo(int	*N, t_tetris *sh_coord)
 	}
 	printf("\n-------------------------------------------");
 	ft_box_calc(&N);//, *box);
-	printf("%p\n", N);
+	printf("%d\n", *N);
 }
