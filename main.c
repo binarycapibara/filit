@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
+/*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/07 18:23:27 by fjenae           ###   ########.fr       */
+/*   Updated: 2019/07/07 18:57:11 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
-#include <fcntl.h>
-#include <stdio.h>
 
 /* **************************************************************************
 **	----int	ft_y_c(char *s, int i)----
@@ -124,7 +121,7 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 		}
 		i++;
 	}
-	return (0);
+	return (sh_nb + 1);
 }
 
 /* **************************************************************************
@@ -154,7 +151,7 @@ int					ft_tetra_read(char *source_f)
 	if (bytes < 0)
 		return (-1);
 	buff[bytes] = '\0';
-	ft_save_shape(buff, ptr);
+	ft_box(ft_save_shape(buff, ptr), ptr);
 	if ((close(fd)) < 0)
 	{
 		ft_putstr_fd("close error\n", 2);
