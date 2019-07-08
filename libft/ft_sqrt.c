@@ -6,13 +6,13 @@
 /*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/26 05:19:54 by fjenae            #+#    #+#             */
-/*   Updated: 2019/05/29 17:59:28 by fjenae           ###   ########.fr       */
+/*   Updated: 2019/07/08 17:03:20 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_sqrt(long n)
+int		ft_sqrt(int n)
 {
 	long	i;
 

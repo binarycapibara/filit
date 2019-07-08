@@ -6,7 +6,7 @@
 #    By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 20:00:16 by drafe             #+#    #+#              #
-#    Updated: 2019/07/08 16:03:59 by fjenae           ###   ########.fr        #
+#    Updated: 2019/07/08 16:52:57 by fjenae           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = fillit
 
-HEADERS = fillit.h\
+HEADERS = fillit.h libft/libft.h
 
 SRC = main.c algorithm.c
 
