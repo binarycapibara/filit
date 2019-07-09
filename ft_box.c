@@ -6,34 +6,46 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/09 18:04:12 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/09 21:21:56 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+int			ft_f_offset(int p_nb)
+{
+	if (p_nb < 4)
+		return (1);
+	else
+	 return(0);
+}
 /* **************************************************************************
 **	----int ft_one_sh(int m, char min_box[m][m])----
 **	Function correctly place one shape in min_box
 ** **************************************************************************
 */
 
-int			ft_one_sh(int m, char min_box[m][m], int i, char sh_letter, t_coords *all_sh)
+int			ft_one_sh(int m, char min_box[m][m], int i, t_coords *all_sh)
 {
+	char	sh_letter;
+	int		p_offset;
 	int		p_nb;
 
 	p_nb = 0;
+	p_offset = 0;
+	sh_letter = 'A' + i;
 	while (p_nb < 4)
 	{
 		if (min_box[i + all_sh[i].y[p_nb]][i + all_sh[i].x[p_nb]] != '.')
-			return (0);
+			break ;
 		else
 			p_nb++;
 	}
+	p_offset = ft_f_offset(p_nb);
 	p_nb = 0;
 	while (p_nb < 4)
 	{
-		min_box[i + all_sh[i].y[p_nb]][i + all_sh[i].x[p_nb]] = sh_letter;
+		min_box[i + all_sh[i].y[p_nb]][i + p_offset + all_sh[i].x[p_nb]] = sh_letter;
 		p_nb++;
 	}
 	return (1);
@@ -47,20 +59,14 @@ int			ft_one_sh(int m, char min_box[m][m], int i, char sh_letter, t_coords *all_
 
 int			ft_box_in(int m, char min_box[m][m], t_coords *all_sh)
 {
-	char	sh_letter;
 	int		i;
 	int		j;
-	
 
 	i = 0;
 	j = 0;
-	sh_letter = 'A';
 	while (j < m)
 	{
-		if(ft_one_sh(m, min_box, j, sh_letter, all_sh))
-		{
-			sh_letter++;
-		}
+		ft_one_sh(m, min_box, j, all_sh);
 		j++;
 	}
 	//ft_box_create(m++, all_sh);
@@ -146,7 +152,6 @@ int			ft_box(int sh_nb, t_coords *all_sh)
 {
 	int		m;
 
-	m = all_sh[0].x[0]; 
 	m = ft_box_size(sh_nb);
 	ft_box_create(m, all_sh);
 	//printf("%d * %d", nbr, nbr);
