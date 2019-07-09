@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/08 15:08:59 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/09 16:03:53 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int					ft_y_c(char *s, int i)
 ** **************************************************************************
 */
 
-int					ft_save_shape(char *s, t_tetris *all_sh)
+int					ft_save_shape(char *s, t_coords *all_sh)
 {
 	int				p_nb;
 	int				nl_nb;
@@ -132,8 +132,8 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 
 int					ft_tetra_read(char *source_f)
 {
-	static t_tetris	all_shapes[26];
-	t_tetris		*ptr;
+	static t_coords	all_shapes[26];
+	t_coords		*ptr;
 	char			*buff;
 	int				bytes;
 	unsigned int	fd;
