@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 15:41:11 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/10 17:20:39 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int			ft_f_offset(int p_nb)
 
 /*
 ** **************************************************************************
-**	----int ft_one_sh(int m, char min_box[m][m])----
+**	----int ft_sh_in(int m, char min_box[m][m])----
 **	Function correctly place one shape in min_box
 ** **************************************************************************
 */
 
-int			ft_one_sh(int m, char min_box[m][m], int i, t_coords *all_sh)
+int			ft_sh_in(int m, char min_box[m][m], int i, t_coords *all_sh)
 {
 	char	sh_letter;
 	int		p_offset;
@@ -49,7 +49,6 @@ int			ft_one_sh(int m, char min_box[m][m], int i, t_coords *all_sh)
 		else
 			p_nb++;
 	}
-	p_offset = ft_f_offset(p_nb);
 	p_nb = 0;
 	while (p_nb < 4)
 	{
@@ -58,4 +57,5 @@ int			ft_one_sh(int m, char min_box[m][m], int i, t_coords *all_sh)
 		p_nb++;
 	}
 	return (1);
+	ft_f_offset(p_nb);
 }

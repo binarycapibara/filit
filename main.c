@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 15:49:15 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/10 17:00:16 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,116 +14,31 @@
 
 /*
 ** **************************************************************************
-**	----int	ft_y_c(char *s, int i)----
-**	Function generate offset from previous point for y
+**	----void	ft_lstbzero(t_coords *all_sh)----
+**	Function initiallize every member in array of structures with 0
 ** **************************************************************************
 */
 
-int					ft_x_c(char *s, int i)
+void				ft_lstbzero(t_coords *all_sh)
 {
-	int				res;
-
-	res = 1;
-	while (s[i - res] != '#')
-		res++;
-	res = res % 5;
-	if ((res < 5) && (res > 1))
-		res = res - 5;
-	return (res);
-}
-
-/*
-** **************************************************************************
-**	----int	ft_y_c(char *s, int i)----
-** 	Function generate offset from previous point for y
-** **************************************************************************
-*/
-
-int					ft_y_c(char *s, int i)
-{
-	int				res;
-
-	res = 1;
-	while (s[i - res] != '#')
-		res++;
-	if (res < 3)
-		res = 0;
-	else
-		res = 1;
-	return (res);
-}
-
-/*
-** **************************************************************************
-**	----int	ft_save_shape(char *s, t_tetris *all_sh)----
-**
-**	t_tetris *all_sh - 26 empty shapes structures;
-**
-**	char *s - buff string readed from input file;
-**
-**	p_nb - shape point_number, every shape has from 0 to 3 point_numbers;
-**
-**	sh_nb - shape_number(0..26) in t_tetris	all_shapes[26];
-**
-**	nl_nb - new_line_number(0..4) help us count sh_nb;
-** ------------------------------------------------------------------------
-**	----Code for print coordinates----
-**	sh_nb = 0;
-** 	while (sh_nb < 19)
-**	{
-**		i = 0;
-**		printf("\n***vvv***%d***vvv***", sh_nb);
-**		while (i < 4)
-**		{
-**			printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,\
-**			i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
-**			i++;
-**		}
-**		sh_nb++;
-**	}
-** **************************************************************************
-*/
-
-int					ft_save_shape(char *s, t_coords *all_sh)
-{
-	int				p_nb;
-	int				nl_nb;
 	int				sh_nb;
-	int				i;
+	int				p_nb;
 
-	i = 0;
 	sh_nb = 0;
-	nl_nb = 0;
 	p_nb = 0;
-	while (s[i] != '\0')
+	while (sh_nb < 26)
 	{
-		if (s[i] == '#')
+		all_sh[sh_nb].mb_x = 0;
+		all_sh[sh_nb].mb_y = 0;
+		p_nb = 0;
+		while (p_nb < 4)
 		{
-			if (p_nb == 0)
-			{
-				all_sh[sh_nb].x[p_nb] = 0;
-				all_sh[sh_nb].y[p_nb] = 0;
-			}
-			else
-			{
-				all_sh[sh_nb].x[p_nb] = all_sh[sh_nb].x[p_nb - 1] + ft_x_c(s, i);
-				all_sh[sh_nb].y[p_nb] = all_sh[sh_nb].y[p_nb - 1] + ft_y_c(s, i);
-			}
+			all_sh[sh_nb].x[p_nb] = 0;
+			all_sh[sh_nb].y[p_nb] = 0;
 			p_nb++;
 		}
-		if (s[i] == '\n')
-		{
-			nl_nb++;
-			if ((nl_nb % 5 == 0) && (nl_nb != 0))
-			{
-				sh_nb++;
-				nl_nb = 0;
-				p_nb = 0;
-			}
-		}
-		i++;
+		sh_nb++;
 	}
-	return (sh_nb + 1);
 }
 
 /*
@@ -142,8 +57,8 @@ int					ft_tetra_read(char *source_f)
 	int				bytes;
 	unsigned int	fd;
 
-	bytes = 0;
 	ptr = all_shapes;
+	ft_lstbzero(ptr);
 	if (!(fd = open(source_f, O_RDONLY)))
 	{
 		ft_putstr_fd("read error\n", 2);

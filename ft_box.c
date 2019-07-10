@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 15:48:08 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/10 17:20:52 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			ft_box_in(int m, char min_box[m][m], t_coords *all_sh)
 	j = 0;
 	while (j < m)
 	{
-		ft_one_sh(m, min_box, j, all_sh);
+		ft_sh_in(m, min_box, j, all_sh);
 		j++;
 	}
 	return (0);
