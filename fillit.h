@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 15:07:55 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 17:20:20 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/10 18:38:55 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int				ft_box_in(int m, char min_box[m][m], t_coords *all_sh);
 int				ft_box_size(int n);
 int				ft_box_create(int m, t_coords *all_sh);
 int				ft_box(int sh_nb, t_coords *all_sh);
-int				ft_sh_in(int m, char min_box[m][m], int i, t_coords *all_sh);
-int				ft_f_offset(int p_nb);
+int				ft_sh_in(int m, char min_box[m][m],int sh_nb, t_coords *all_sh);
+int				ft_p_offset(int p_nb);
 int				ft_x_c(char *s, int i);
 int				ft_y_c(char *s, int i);
 int				ft_save_shape(char *s, t_coords *all_sh);

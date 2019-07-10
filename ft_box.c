@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 17:20:52 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/10 18:41:16 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,25 @@ int			ft_box_in(int m, char min_box[m][m], t_coords *all_sh)
 {
 	int		i;
 	int		j;
+	int		sh_nb;
 
 	i = 0;
 	j = 0;
-	while (j < m)
+	sh_nb = 0;
+	while ((i < m) && (sh_nb < 1))
 	{
-		ft_sh_in(m, min_box, j, all_sh);
-		j++;
+		j = 0;
+		while ((j < m) && (sh_nb < 1))
+		{
+			all_sh[sh_nb].mb_x = j;
+			all_sh[sh_nb].mb_y = i;
+			if (ft_sh_in(m, min_box, sh_nb, all_sh))
+				sh_nb++;
+			else
+				sh_nb += 2;
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }
