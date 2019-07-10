@@ -6,7 +6,7 @@
 #    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 20:00:16 by drafe             #+#    #+#              #
-#    Updated: 2019/07/07 19:35:16 by drafe            ###   ########.fr        #
+#    Updated: 2019/07/10 15:21:45 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,12 @@ HEADERS = fillit.h\
 	libft/libft.h
 
 OBJ = main.o\
-	ft_box.o
+	ft_box.o\
+	ft_one_sh.o
 
 SRC = main.c\
-	ft_box.c
+	ft_box.c\
+	ft_one_sh.c
 
 all: $(NAME)
 
