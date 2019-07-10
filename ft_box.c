@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 18:41:16 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/10 20:42:34 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 ** **************************************************************************
 **	----int ft_box_in(int m, char min_box[m][m])----
 **	Function place shapes in min_box
-** For bigger min_box place ft_box_create(m++, all_sh);
+**	for create bigger min_box place ft_box_create(m++, all_sh);
+**	size - number of shapes
 ** **************************************************************************
 */
 
-int			ft_box_in(int m, char min_box[m][m], t_coords *all_sh)
+int			ft_box_in(int size, int m, char min_box[m][m], t_coords *all_sh)
 {
 	int		i;
 	int		j;
@@ -29,10 +30,10 @@ int			ft_box_in(int m, char min_box[m][m], t_coords *all_sh)
 	i = 0;
 	j = 0;
 	sh_nb = 0;
-	while ((i < m) && (sh_nb < 1))
+	while ((i < m) && (sh_nb < size))
 	{
 		j = 0;
-		while ((j < m) && (sh_nb < 1))
+		while ((j < m) && (sh_nb < size))
 		{
 			all_sh[sh_nb].mb_x = j;
 			all_sh[sh_nb].mb_y = i;
@@ -85,7 +86,7 @@ int			ft_box_size(int n)
 ** **************************************************************************
 */
 
-int			ft_box_create(int m, t_coords *all_sh)
+int			ft_box_create(int sh_nb, int m, t_coords *all_sh)
 {
 	char	min_box[m][m];
 	int		i;
@@ -102,7 +103,7 @@ int			ft_box_create(int m, t_coords *all_sh)
 		}
 		i++;
 	}
-	ft_box_in(m, min_box, all_sh);
+	ft_box_in(sh_nb, m, min_box, all_sh);
 	i = 0;
 	while (i < m)
 	{
@@ -130,6 +131,6 @@ int			ft_box(int sh_nb, t_coords *all_sh)
 	int		m;
 
 	m = ft_box_size(sh_nb);
-	ft_box_create(m, all_sh);
+	ft_box_create(sh_nb, m, all_sh);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 15:07:55 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 18:38:55 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/10 20:41:18 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ typedef struct	s_coords
 	int			mb_y;
 }				t_coords;
 
-int				ft_box_in(int m, char min_box[m][m], t_coords *all_sh);
+int				ft_box_in(int size, int m, char min_box[m][m], t_coords *all_sh);
 int				ft_box_size(int n);
-int				ft_box_create(int m, t_coords *all_sh);
+int				ft_box_create(int sh_nb, int m, t_coords *all_sh);
 int				ft_box(int sh_nb, t_coords *all_sh);
 int				ft_sh_in(int m, char min_box[m][m],int sh_nb, t_coords *all_sh);
 int				ft_p_offset(int p_nb);
