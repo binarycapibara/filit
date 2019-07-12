@@ -14,7 +14,7 @@
             "targetArchitecture": "x64",
             "preLaunchTask": "make re",
             "program": "${workspaceFolder}/fillit",
-            "args": ["all_tetr.txt"],
+            "args": ["./tests/test_1sh.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

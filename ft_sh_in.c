@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/12 18:51:21 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/12 19:17:24 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		ft_p_a(int m, char min_box[m][m])
 ** **************************************************************************
 */
 
-int		ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
+int			ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
 {
 	int		p_nb;
 	int		tmp;
@@ -64,19 +64,16 @@ int		ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
 		if (((x >= m) || (y >= m)) || (min_box[y][x] != '.') || (tmp < 0))
 			break ;
 		tmp = x;
-		printf("p_nb=%d, tmp=%d, x=%d\n", p_nb, tmp, x);
-		//if ((all_sh[sh_nb].mb_y + all_sh[sh_nb].y[p_nb])
 		p_nb++;
 	}
-	//printf("x =%d sh_nb=%d all_sh[sh_nb].mb_x=%d\n", x, sh_nb, all_sh[sh_nb].mb_x);
-	return (ft_p_offset(m , p_nb, sh_nb, all_sh));
+	return (ft_p_offset(m, p_nb, sh_nb, all_sh));
 }
+
 /*
 ** **************************************************************************
 **	-int	ft_p_move(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)-
 **	Function to move shape through min_box
 **	check all shape points fit in or not
-**	
 ** **************************************************************************
 */
 
@@ -92,8 +89,6 @@ int			ft_p_move(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
 	if (chk)
 		return (1);
 	return (0);
-	/*ft_p_move(m, min_box, sh_nb, all_sh);
-		return (0); */
 }
 
 /*
@@ -107,7 +102,7 @@ int			ft_p_offset(int m, int p_nb, int sh_nb, t_coords *all_sh)
 {
 	if (p_nb != 4)
 	{
-		if	(all_sh[sh_nb].mb_x >= m)
+		if (all_sh[sh_nb].mb_x >= m)
 		{
 			all_sh[sh_nb].mb_x = 0;
 			all_sh[sh_nb].mb_y += 1;
@@ -146,12 +141,4 @@ int			ft_sh_in(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
 	}
 	else
 		return (0);
-	
-	
-
-
-
-	
-	ft_mb_chk(m, min_box, sh_nb, all_sh);
-	//ft_p_a(m, min_box);
 }
