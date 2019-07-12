@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/12 18:02:38 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/12 18:51:21 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,26 @@ void		ft_p_a(int m, char min_box[m][m])
 int		ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
 {
 	int		p_nb;
+	int		tmp;
+	int		x;
+	int		y;
 
+	x = 0;
+	y = 0;
 	p_nb = 0;
+	tmp = 0;
 	while (p_nb < 4)
 	{
-		if((all_sh[sh_nb].mb_y + all_sh[sh_nb].y[p_nb] >= m) || \
-		(all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb] >= m))
+		x = all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb];
+		y = all_sh[sh_nb].mb_y + all_sh[sh_nb].y[p_nb];
+		if (((x >= m) || (y >= m)) || (min_box[y][x] != '.') || (tmp < 0))
 			break ;
-		if (min_box[all_sh[sh_nb].mb_y + all_sh[sh_nb].y[p_nb]]\
-		[all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb]] != '.')
-			break ;
+		tmp = x;
+		printf("p_nb=%d, tmp=%d, x=%d\n", p_nb, tmp, x);
+		//if ((all_sh[sh_nb].mb_y + all_sh[sh_nb].y[p_nb])
 		p_nb++;
 	}
+	//printf("x =%d sh_nb=%d all_sh[sh_nb].mb_x=%d\n", x, sh_nb, all_sh[sh_nb].mb_x);
 	return (ft_p_offset(m , p_nb, sh_nb, all_sh));
 }
 /*
@@ -77,7 +85,6 @@ int			ft_p_move(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
 	int		chk;
 
 	chk = 0;
-	printf("sh_nb=%d chk=%d all_sh[p_nb].mb_x=%d\n", sh_nb, chk, all_sh[sh_nb].mb_x);
 	while (!chk && (all_sh[sh_nb].mb_y < m))
 	{
 		chk = ft_mb_chk(m, min_box, sh_nb, all_sh);
