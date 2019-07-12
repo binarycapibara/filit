@@ -1,0 +1,16 @@
+echo "test_1ish.txt";
+./fillit ./tests/test_1ish.txt;
+echo "test_1lsh.txt";
+./fillit ./tests/test_1lsh.txt;
+echo "test_1osh.txt";
+./fillit ./tests/test_1osh.txt;
+echo "test_1tsh.txt";
+./fillit ./tests/test_1tsh.txt;
+echo "test_1zsh.txt";
+./fillit ./tests/test_1zsh.txt;
+echo "test_2sh.txt";
+./fillit ./tests/test_2sh.txt;
+echo "test_4sh.txt";
+./fillit ./tests/test_4sh.txt;
+echo "test_8sh.txt";
+./fillit ./tests/test_8sh.txt;
