@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 20:42:34 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/12 17:20:57 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,35 @@ int			ft_box_in(int size, int m, char min_box[m][m], t_coords *all_sh)
 	i = 0;
 	j = 0;
 	sh_nb = 0;
-	while ((i < m) && (sh_nb < size))
+	while (sh_nb < size)
+	{
+		if (ft_sh_in(m, min_box, sh_nb, all_sh))
+			sh_nb++;
+		else
+		{
+			
+			break ;
+		}
+	}
+	//printf("all_sh[1].mb_x=%d\n", all_sh[1].mb_x);
+	printf("sh_nb=%d size=%d", sh_nb, size);
+	return (0);
+}
+/*	if (sh_nb != size)
+	{
+		ft_box_create(size, m + 1, all_sh);
+	}
+	
+ 	while ((i < m) && (sh_nb < size))
 	{
 		j = 0;
 		while ((j < m) && (sh_nb < size))
 		{
-			all_sh[sh_nb].mb_x = j;
-			all_sh[sh_nb].mb_y = i;
-			if (ft_sh_in(m, min_box, sh_nb, all_sh))
-				sh_nb++;
-			else
-				sh_nb += 2;
 			j++;
 		}
 		i++;
 	}
-	return (0);
-}
-
+*/
 /*
 ** **************************************************************************
 **	----int	ft_box_size(int n)----
@@ -104,18 +115,7 @@ int			ft_box_create(int sh_nb, int m, t_coords *all_sh)
 		i++;
 	}
 	ft_box_in(sh_nb, m, min_box, all_sh);
-	i = 0;
-	while (i < m)
-	{
-		j = 0;
-		while (j < m)
-		{
-			printf("%c", min_box[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	ft_p_a(m, min_box);
 	return (0);
 }
 
