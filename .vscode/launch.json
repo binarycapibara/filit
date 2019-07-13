@@ -14,7 +14,7 @@
             "targetArchitecture": "x64",
             "preLaunchTask": "make re",
             "program": "${workspaceFolder}/fillit",
-            "args": ["./tests/test_8sh.txt"],
+            "args": ["./tests/test_2oish.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

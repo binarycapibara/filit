@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sh_in.c                                         :+:      :+:    :+:   */
+/*   ft_place_sh.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/12 19:17:24 by drafe            ###   ########.fr       */
+/*   Created: 2019/07/13 17:26:09 by drafe             #+#    #+#             */
+/*   Updated: 2019/07/13 19:47:54 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,36 @@
 
 /*
 ** **************************************************************************
-**	-void	ft_p_a(int m, char min_box[m][m])-
-**	Function to print min_box
+**	(1) int	ft_f_offset(int p_nb)
+**	Function move shape to next + 1 point
 ** **************************************************************************
 */
 
-void		ft_p_a(int m, char min_box[m][m])
+int			ft_p_offset(int m, int p_nb, int sh_nb, t_crds *all_sh)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (i < m)
+	if (p_nb != 4)
 	{
-		j = 0;
-		while (j < m)
+		if (all_sh[sh_nb].mb_x >= m)
 		{
-			ft_putchar(min_box[i][j]);
-			j++;
+			all_sh[sh_nb].mb_x = 0;
+			all_sh[sh_nb].mb_y += 1;
 		}
-		ft_putstr("\n");
-		i++;
+		else
+			all_sh[sh_nb].mb_x += 1;
+		return (0);
 	}
+	else
+		return (1);
 }
 
 /*
 ** **************************************************************************
-**	-int	ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)-
+**	(2)int	ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
 **	Function to check correct place of shape in min_box
 ** **************************************************************************
 */
 
-int			ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
+int			ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
 {
 	int		p_nb;
 	int		tmp;
@@ -71,13 +68,13 @@ int			ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
 
 /*
 ** **************************************************************************
-**	-int	ft_p_move(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)-
+**	(3)int	ft_p_move(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
 **	Function to move shape through min_box
 **	check all shape points fit in or not
 ** **************************************************************************
 */
 
-int			ft_p_move(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
+int			ft_sh_move(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
 {
 	int		chk;
 
@@ -93,52 +90,31 @@ int			ft_p_move(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
 
 /*
 ** **************************************************************************
-**	----int	ft_f_offset(int p_nb)----
-**	Function move shape to next + 1 point
-** **************************************************************************
-*/
-
-int			ft_p_offset(int m, int p_nb, int sh_nb, t_coords *all_sh)
-{
-	if (p_nb != 4)
-	{
-		if (all_sh[sh_nb].mb_x >= m)
-		{
-			all_sh[sh_nb].mb_x = 0;
-			all_sh[sh_nb].mb_y += 1;
-		}
-		else
-			all_sh[sh_nb].mb_x += 1;
-		return (0);
-	}
-	else
-		return (1);
-}
-
-/*
-** **************************************************************************
-**	----int ft_sh_in(int m, char min_box[m][m])----
+**	(4)int ft_sh_in(int m, char min_box[m][m])
 **	Function place one shape in min_box if ft_p_move == 1
 ** **************************************************************************
 */
 
-int			ft_sh_in(int m, char min_box[m][m], int sh_nb, t_coords *all_sh)
+int			ft_plc_sh(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
 {
-	char	sh_letter;
 	int		p_nb;
 
 	p_nb = 0;
-	if (ft_p_move(m, min_box, sh_nb, all_sh))
+	if (ft_sh_move(m, min_box, sh_nb, all_sh))
 	{
-		sh_letter = 'A' + sh_nb;
+		
 		while (p_nb < 4)
 		{
+			all_sh[sh_nb].used = 1;
 			min_box[all_sh[sh_nb].mb_y + all_sh[sh_nb].y[p_nb]]\
-			[all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb]] = sh_letter;
+			[all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb]] = all_sh[sh_nb].sh_let;
 			p_nb++;
 		}
 		return (1);
 	}
 	else
+	{
+		all_sh[sh_nb].used = 0;
 		return (0);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/10 16:27:22 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 16:32:26 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/13 17:34:48 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** **************************************************************************
-**	----int	ft_y_c(char *s, int i)----
+**	(1)int	ft_y_c(char *s, int i)
 **	Function generate offset from previous point for y
 ** **************************************************************************
 */
@@ -34,7 +34,7 @@ int					ft_x_c(char *s, int i)
 
 /*
 ** **************************************************************************
-**	----int	ft_y_c(char *s, int i)----
+**	(2)int	ft_y_c(char *s, int i)
 ** 	Function generate offset from previous point for y
 ** **************************************************************************
 */
@@ -55,15 +55,15 @@ int					ft_y_c(char *s, int i)
 
 /*
 ** **************************************************************************
-**	----int	ft_save_shape(char *s, t_tetris *all_sh)----
+**	(3)int	ft_save_shape(char *s, t_crds *all_sh)
 **
-**	t_tetris *all_sh - 26 empty shapes structures;
+**	t_crds *all_sh - 26 empty shapes structures;
 **
 **	char *s - buff string readed from input file;
 **
 **	p_nb - shape point_number, every shape has from 0 to 3 point_numbers;
 **
-**	sh_nb - shape_number(0..26) in t_tetris	all_shapes[26];
+**	sh_nb - shape_number(0..26) in t_crds	all_shapes[26];
 **
 **	nl_nb - new_line_number(0..4) help us count sh_nb;
 ** ------------------------------------------------------------------------
@@ -84,7 +84,7 @@ int					ft_y_c(char *s, int i)
 ** **************************************************************************
 */
 
-int					ft_save_shape(char *s, t_coords *all_sh)
+int					ft_save_shape(char *s, t_crds *all_sh)
 {
 	int				p_nb;
 	int				nl_nb;

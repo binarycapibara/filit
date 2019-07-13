@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/10 20:36:53 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/13 19:47:26 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*
 ** **************************************************************************
-**	----void	ft_lstbzero(t_coords *all_sh)----
+**	(1)void	ft_lstbzero(t_crds *all_sh)
 **	Function initiallize every member in array of structures with 0
 ** **************************************************************************
 */
 
-void				ft_lstbzero(t_coords *all_sh)
+void				ft_lstbzero(t_crds *all_sh)
 {
 	int				sh_nb;
 	int				p_nb;
@@ -30,6 +30,8 @@ void				ft_lstbzero(t_coords *all_sh)
 	{
 		all_sh[sh_nb].mb_x = 0;
 		all_sh[sh_nb].mb_y = 0;
+		all_sh[sh_nb].used = 0;
+		all_sh[sh_nb].sh_let = 'A' + sh_nb;
 		p_nb = 0;
 		while (p_nb < 4)
 		{
@@ -43,7 +45,7 @@ void				ft_lstbzero(t_coords *all_sh)
 
 /*
 ** **************************************************************************
-**	----int	ft_tetra_read(char *source_f)----
+**	(2)int	ft_tetra_read(char *source_f)
 **	Function read 546 bytes from input_file to string *buff
 **  and send *buff with pointer to empty array of structures
 ** **************************************************************************
@@ -51,8 +53,8 @@ void				ft_lstbzero(t_coords *all_sh)
 
 int					ft_tetra_read(char *source_f)
 {
-	static t_coords	all_shapes[26];
-	t_coords		*ptr;
+	static t_crds	all_shapes[26];
+	t_crds			*ptr;
 	char			*buff;
 	int				bytes;
 	unsigned int	fd;
