@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/15 20:55:48 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/15 21:30:12 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void			ft_swap_sh(int sh_nb1, int sh_nb2, t_crds *all_sh)
 ** **************************************************************************
 */
 
-int				ft_back_t(int m, int pos, int size, t_crds *all_sh)
+int				ft_back_t(int pos, int size, t_crds *all_sh)
 {
 	int			i;
 
@@ -48,16 +48,17 @@ int				ft_back_t(int m, int pos, int size, t_crds *all_sh)
 		{
 			ft_swap_sh(pos, i , all_sh); //поставим
 			all_sh[i].used = 1;
-			ft_back_t(m, pos + 1, size, all_sh);
+			ft_back_t(pos + 1, size, all_sh);
 			ft_swap_sh(pos, 0, all_sh);
 			all_sh[i].used = 0;
 		}
 		i++;
 	}
 	i = 0;
+	printf("\n");
 	while(i < size)
 	{
-		printf("%d%c ", i, all_sh[i].sh_let);
+		printf("[%d]=%c", i, all_sh[i].sh_let);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/15 20:46:42 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/15 21:07:51 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ int			ft_box(int sh_nb, t_crds *all_sh)
 	tmp = 0;
 	while (tmp < sh_nb)
 	{
-		ft_back_t(m, tmp, sh_nb, all_sh);
+		ft_back_t(tmp, sh_nb, all_sh);
 		tmp = ft_box_create(sh_nb, m, all_sh);
 		printf("\ntmp=%d sh_nb=%d@ used=%d\n", tmp, sh_nb, all_sh[sh_nb].used);
 	}

@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 15:07:55 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/15 19:58:21 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/15 21:07:30 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int				ft_save_shape(char *s, t_crds *all_sh);
 int				ft_tetra_read(char *source_f);
 void			ft_lstbzero(t_crds *all_sh);
 int				ft_sh_mv(int m, char min_box[m][m], int sh_nb, t_crds *all_sh);
-int				ft_back_t(int m, int pos, int size, t_crds *all_sh);
+int				ft_back_t(int pos, int size, t_crds *all_sh);
 void			ft_swap_sh(int sh_nb1, int sh_nb2, t_crds *all_sh);
 int				ft_find_empt(int m, char min_box[m][m], int sh_nb, t_crds *all_sh);
 
