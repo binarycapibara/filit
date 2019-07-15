@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/13 20:56:46 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/15 20:46:42 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,28 +78,24 @@ int			ft_box_size(int n)
 ** **************************************************************************
 */
 
-int			ft_tile_box(int size, int m, char min_box[m][m], t_crds *all_sh)
+int			ft_tile(int m, char min_box[m][m], int size, t_crds *all_sh)
 {
 	int		i;
-	int		j;
 	int		sh_nb;
 
 	i = 0;
-	j = 0;
 	sh_nb = 0;
 	while (sh_nb < size)
 	{
 		all_sh[sh_nb].mb_x = 0;
 		all_sh[sh_nb].mb_y = 0;
+		all_sh[sh_nb].used = 0;
 		if (ft_plc_sh(m, min_box, sh_nb, all_sh))
 			sh_nb++;
 		else
 			break ;
 	}
-	//ft_p_a(m, min_box);
-	if (sh_nb != size)
-		return(0);
-	return (1);
+	return (sh_nb);
 }
 
 /*
@@ -127,15 +123,21 @@ int		ft_box_create(int sh_nb, int m, t_crds *all_sh)
 		}
 		i++;
 	}
-	if (!ft_tile_box(sh_nb, m, min_box, all_sh))
+	
+	/* expand array +1 if cant tile
+	i = ft_tile_box( m, min_box, sh_nb,all_sh);
+	if (i)
 	{
-		ft_box_create(sh_nb, m + 1, all_sh);
+		ft_back_t(m, i, sh_nb, all_sh);
+		//ft_box_create(sh_nb, m + 1, all_sh);
 	}
 	else
 	{
 		ft_p_a(m, min_box);
-	}
-	return (0);
+	}*/
+	i = ft_tile(m, min_box, sh_nb, all_sh);
+	ft_p_a(m, min_box);
+	return (i);
 }
 
 /*
@@ -148,8 +150,17 @@ int		ft_box_create(int sh_nb, int m, t_crds *all_sh)
 int			ft_box(int sh_nb, t_crds *all_sh)
 {
 	int		m;
+	int		tmp;
 
+	m = 0;
 	m = ft_box_size(sh_nb);
-	ft_box_create(sh_nb, m, all_sh);
+	tmp = 0;
+	while (tmp < sh_nb)
+	{
+		ft_back_t(m, tmp, sh_nb, all_sh);
+		tmp = ft_box_create(sh_nb, m, all_sh);
+		printf("\ntmp=%d sh_nb=%d@ used=%d\n", tmp, sh_nb, all_sh[sh_nb].used);
+	}
+	printf("\ntmp=%d sh_nb=%d@ used=%d\n", tmp, sh_nb, all_sh[sh_nb].used);
 	return (0);
 }
