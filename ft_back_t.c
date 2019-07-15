@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/15 20:45:32 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/15 20:55:48 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int				ft_back_t(int m, int pos, int size, t_crds *all_sh)
 			ft_swap_sh(pos, i , all_sh); //поставим
 			all_sh[i].used = 1;
 			ft_back_t(m, pos + 1, size, all_sh);
-			//ft_swap_sh(pos, 0, all_sh);
+			ft_swap_sh(pos, 0, all_sh);
+			all_sh[i].used = 0;
 		}
 		i++;
 	}
