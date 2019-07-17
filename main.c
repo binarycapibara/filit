@@ -151,7 +151,7 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 
 int					ft_tetra_read(char *source_f)
 {
-	static t_tetris	all_shapes[26];
+	static          t_tetris	all_shapes[26];
 	t_tetris		*ptr;
 	char			*buff;
 	int				bytes;
