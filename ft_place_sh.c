@@ -6,18 +6,11 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 17:26:09 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/15 20:23:48 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/19 19:38:24 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-/*
-** **************************************************************************
-**	(2) int	ft_f_offset(int p_nb)
-**	Function move shape to next + 1 point
-** **************************************************************************
-*/
 
 int			ft_p_offset(int m, int p_nb, int sh_nb, t_crds *all_sh)
 {
@@ -36,24 +29,17 @@ int			ft_p_offset(int m, int p_nb, int sh_nb, t_crds *all_sh)
 		return (1);
 }
 
-/*
-** **************************************************************************
-**	(3)int	ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
-**	Function to check correct place of shape in min_box
-** **************************************************************************
-*/
-
-int			ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
+int			ft_mb_chk(int m, char **min_box, int sh_nb, t_crds *all_sh)
 {
 	int		p_nb;
 	int		tmp;
 	int		x;
 	int		y;
 
-	x = 0;
-	y = 0;
 	p_nb = 0;
 	tmp = 0;
+	x = 0;
+	y = 0;
 	while (p_nb < 4)
 	{
 		x = all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb];
@@ -66,36 +52,19 @@ int			ft_mb_chk(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
 	return (ft_p_offset(m, p_nb, sh_nb, all_sh));
 }
 
-/*
-** **************************************************************************
-**	(4)int	ft_p_move(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
-**	Function to move shape through min_box
-**	check all shape points fit in or not
-** **************************************************************************
-*/
-
-int			ft_sh_move(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
+int			ft_sh_move(int m, char **min_box, int sh_nb, t_crds *all_sh)
 {
 	int		chk;
 
 	chk = 0;
 	while (!chk && (all_sh[sh_nb].mb_y < m))
-	{
 		chk = ft_mb_chk(m, min_box, sh_nb, all_sh);
-	}
 	if (chk)
 		return (1);
 	return (0);
 }
 
-/*
-** **************************************************************************
-**	(5)int ft_sh_in(int m, char min_box[m][m])
-**	Function place one shape in min_box if ft_p_move == 1
-** **************************************************************************
-*/
-
-int			ft_plc_sh(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
+int			ft_plc_sh(int m, char **min_box, int sh_nb, t_crds *all_sh)
 {
 	int		p_nb;
 
@@ -108,37 +77,33 @@ int			ft_plc_sh(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
 			[all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb]] = all_sh[sh_nb].sh_let;
 			p_nb++;
 		}
-		/*if (!ft_find_empt(m, min_box, sh_nb, all_sh))
-			return (0);*/
 		return (1);
 	}
 	else
 	{
+		all_sh[sh_nb].mb_x = 0;
+		all_sh[sh_nb].mb_y = 0;
 		return (0);
 	}
-	
 }
-/* 
-int			ft_find_empt(int m, char min_box[m][m], int sh_nb, t_crds *all_sh)
-{
-	int		empt;
-	int		i;
-	int		j;
 
-	i = 0;
-	j = 0;
-	empt = 0;
-	while ((i < m) && (min_box[i][j] == all_sh[sh_nb].sh_let))
+void		ft_rm_sh(char **min_box, int sh_nb, t_crds *all_sh)
+{
+	int		p_nb;
+	int		x;
+	int		y;
+
+	p_nb = 0;
+	x = 0;
+	y = 0;
+	if (sh_nb < 0)
+		sh_nb = 0;
+	while (p_nb < 4)
 	{
-		while (j < m)
-		{
-			if (min_box[i][j] == '.')
-				empt++;
-			j++;
-		}
-		i++;
+		y = all_sh[sh_nb].mb_y + all_sh[sh_nb].y[p_nb];
+		x = all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb];
+		if (all_sh[sh_nb].sh_let == min_box[y][x])
+			min_box[y][x] = '.';
+		p_nb++;
 	}
-	if (empt >= 2)
-		return (0);
-	return (1);
-}*/
+}

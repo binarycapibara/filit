@@ -1,5 +1,0 @@
-Makefile must compile your code without relinks
-
-\n after every tear
-
-valgrind --leak-check=full -v --leak-resolution=med --show-leak-kinds=all --track-origins=yes ./fillit ./test/test_4sh.txt
