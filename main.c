@@ -118,6 +118,7 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 			nl_nb++;
 			if ((nl_nb % 5 == 0) && (nl_nb != 0))
 			{
+                all_sh[sh_nb].litera = 'A' + sh_nb;
 				sh_nb++;
 				nl_nb = 0;
 				p_nb = 0;
@@ -126,6 +127,7 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 		i++;
 	}
 	tmp = sh_nb;
+    all_sh[sh_nb].litera = 'A' + sh_nb;
 	// sh_nb = 0;
  	// while (sh_nb <= tmp)
 	// {

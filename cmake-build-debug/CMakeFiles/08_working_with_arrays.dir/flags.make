@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/fjenae/Desktop/15_filit/. -I/Users/fjenae/Desktop/15_filit/libft 
+C_INCLUDES = -I/Users/fjenae/Desktop/17_filit/. -I/Users/fjenae/Desktop/17_filit/libft 
 

@@ -6,23 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/Users/fjenae/Desktop/15_filit/algorithm.c
-fillit.h
-/Users/fjenae/Desktop/15_filit/fillit.h
-
-/Users/fjenae/Desktop/15_filit/fillit.h
+/Users/fjenae/Desktop/17_filit/fillit.h
 fcntl.h
 -
 stdio.h
 -
 libft/libft.h
-/Users/fjenae/Desktop/15_filit/libft/libft.h
+/Users/fjenae/Desktop/17_filit/libft/libft.h
 
-/Users/fjenae/Desktop/15_filit/libft/libft.h
+/Users/fjenae/Desktop/17_filit/libft/libft.h
 string.h
 -
 stdlib.h
 -
 unistd.h
 -
+
+/Users/fjenae/Desktop/17_filit/placement.c
+fillit.h
+/Users/fjenae/Desktop/17_filit/fillit.h
 
