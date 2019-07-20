@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+         #
+#    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 20:00:16 by drafe             #+#    #+#              #
-#    Updated: 2019/07/08 19:49:55 by fjenae           ###   ########.fr        #
+#    Updated: 2019/07/19 17:31:01 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,6 @@ OBJ = ft_memset.o\
 	ft_lstadd.o\
 	ft_lstiter.o\
 	ft_lstmap.o\
-	ft_sqrt.o\
 
 SRC = ft_memset.c\
 	ft_bzero.c\
@@ -136,19 +135,19 @@ SRC = ft_memset.c\
 	ft_lstadd.c\
 	ft_lstiter.c\
 	ft_lstmap.c\
-	ft_sqrt.c\
 
 all: $(NAME)
 
 $(NAME):
-	$(CC) -c -I $(HEADERS) $(CFLAGS) $(SRC)
-	ar -rc $(NAME) $(OBJ)
+	@$(CC) -c -I $(HEADERS) $(CFLAGS) $(SRC)
+	@ar -rc $(NAME) $(OBJ)
 
 clean:
-	rm -rf $(OBJ)
+	@rm -rf $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@rm -f libft.h.gch
 
 re: fclean all
 
