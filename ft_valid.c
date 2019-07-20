@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 19:58:00 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/20 18:33:47 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/20 19:31:02 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,31 @@ int			ft_shp_chk(char *s)
 int			ft_sh_size(char *s)
 {
 	int		i;
+	int		p_nb;
+	int		sh_width;
+	int		sh_height;
 
-	return (0);
+	i = 0;
+	p_nb = 0;
+	sh_width = 0;
+	sh_height = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == '#')
+		{
+			if (i % 5 == 0)
+				sh_height++;
+			p_nb++;
+		}
+		if (p_nb == 4)
+		{
+			p_nb = 0;
+			if ((sh_height > 3) && (sh_width > 1))
+				return (0);
+			sh_height = 0;
+		}
+		i++;
+	}
 	return (1);
 }
 

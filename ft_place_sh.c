@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 17:26:09 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/20 18:23:22 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/20 18:45:55 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void		ft_rm_sh(char **min_box, int m, int sh_nb, t_crds *all_sh)
 {
 	int		p_nb;
 	int		x;
-	int		y;
+	int		y; 
 
 	p_nb = 0;
 	x = 0;
