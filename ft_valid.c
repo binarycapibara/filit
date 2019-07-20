@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 19:58:00 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/20 19:31:02 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/20 20:59:29 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,20 @@ int			ft_shp_chk(char *s)
 {
 	int		i;
 	int		p_nb;
-	int		diag;
 
-	i = -1;
-	diag = 0;
+	i = 0;
 	p_nb = 0;
-	while (s[++i] != '\0')
+	while (s[i] != '\0')
 	{
 		if (s[i] == '#')
-		{
-			if ((s[i + 3] == '#') || (s[i + 5] == '#'))
-				diag++;
-			else
-				diag = 0;
 			p_nb++;
-		}
 		if ((s[i] == '\n') && ((s[i + 1] == '\0') || (s[i + 1] == '\n')))
 		{
-			if (p_nb != 4 || (diag == 4))
+			if (p_nb != 4)
 				return (0);
 			p_nb = 0;
 		}
+		i++;
 	}
 	return (1);
 }
@@ -80,27 +73,28 @@ int			ft_sh_size(char *s)
 {
 	int		i;
 	int		p_nb;
-	int		sh_width;
-	int		sh_height;
+	int		sh_touch;
 
 	i = 0;
-	p_nb = 0;
-	sh_width = 0;
-	sh_height = 0;
+	p_nb = 1;
+	sh_touch = 0;
 	while (s[i] != '\0')
 	{
 		if (s[i] == '#')
 		{
-			if (i % 5 == 0)
-				sh_height++;
+			if ((p_nb != 3) && ((s[i + 1] == '#') || (s[i + 5] == '#')))
+			{
+				sh_touch++;
+			}
+			if ((sh_touch == 0) || (sh_touch > 3))
+				return (0);
 			p_nb++;
 		}
 		if (p_nb == 4)
 		{
+			printf("i=%d sh_touch=%d p_nb=%d\n", i, sh_touch, p_nb);
 			p_nb = 0;
-			if ((sh_height > 3) && (sh_width > 1))
-				return (0);
-			sh_height = 0;
+			sh_touch = 0;
 		}
 		i++;
 	}
