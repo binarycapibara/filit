@@ -13,8 +13,6 @@ echo "test_2oish.txt";
 ./fillit ./tests/test_2oish.txt;
 echo "test_2iosh.txt";
 ./fillit ./tests/test_2iosh.txt;
-echo "test_2sh.txt";
-./fillit ./tests/test_2sh.txt;
 echo "test_4sh.txt";
 ./fillit ./tests/test_4sh.txt;
 echo "test_8sh.txt";
