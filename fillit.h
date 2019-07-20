@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 15:07:55 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/19 21:28:45 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/20 18:24:04 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct	s_crds
 int				ft_p_offset(int m, int p_nb, int sh_nb, t_crds *all_sh);
 int				ft_sh_mv(int m, char **min_box, int sh_nb, t_crds *all_sh);
 int				ft_plc_sh(int m, char **min_box, int sh_nb, t_crds *all_sh);
-void			ft_rm_sh(char **min_box, int sh_nb, t_crds *all_sh);
+void			ft_rm_sh(char **min_box, int m, int sh_nb, t_crds *all_sh);
 void			ft_p_a(int m, char **min_box);
 int				ft_box_size(int n);
 int				ft_tile(char **min_box, int n, t_crds *all_sh, int pos);

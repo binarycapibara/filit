@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 19:58:00 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/20 17:20:24 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/20 18:33:47 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,14 @@ int			ft_shp_chk(char *s)
 	return (1);
 }
 
+int			ft_sh_size(char *s)
+{
+	int		i;
+
+	return (0);
+	return (1);
+}
+
 int			ft_valid(char *s, int n_sh)
 {
 	t_crds	all_shapes[n_sh];
@@ -85,6 +93,8 @@ int			ft_valid(char *s, int n_sh)
 	if (!ft_symb_chk(s))
 		return (0);
 	if (!ft_shp_chk(s))
+		return (0);
+	if (!ft_sh_size(s))
 		return (0);
 	ft_lstbzero(all_shapes, n_sh);
 	return (ft_box(ft_save_shape(s, all_shapes), all_shapes));

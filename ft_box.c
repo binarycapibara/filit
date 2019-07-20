@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 18:53:53 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/20 17:27:18 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/20 18:25:22 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,14 @@ int				ft_tile(char **min_box, int n, t_crds *all_sh, int pos)
 	int			x;
 	int			y;
 
-	m = 0;
 	y = 0;
-	if (pos >= n)
+	if (pos == n)
 		return (1);
-	m = ft_box_size(n);
+	m = ft_strlen(*min_box);
 	while (y < m)
 	{
-		x = -1;
-		while (++x < m)
+		x = 0;
+		while (x < m)
 		{
 			all_sh[pos].mb_x = x;
 			all_sh[pos].mb_y = y;
@@ -86,7 +85,8 @@ int				ft_tile(char **min_box, int n, t_crds *all_sh, int pos)
 			&& ft_tile(min_box, n, all_sh, pos + 1))
 				return (1);
 			else
-				ft_rm_sh(min_box, pos, all_sh);
+				ft_rm_sh(min_box, m, pos, all_sh);
+			x++;
 		}
 		y++;
 	}
@@ -101,7 +101,10 @@ int				ft_box(int sh_nb, t_crds *all_sh)
 	m = ft_box_size(sh_nb);
 	min_box = ft_box_create(m);
 	while (!ft_tile(min_box, sh_nb, all_sh, 0))
+	{
 		m++;
+		min_box = ft_box_create(m);
+	}
 	ft_p_a(m, min_box);
 	return (1);
 }

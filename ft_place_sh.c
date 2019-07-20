@@ -6,7 +6,7 @@
 /*   By: drafe <drafe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 17:26:09 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/19 19:38:24 by drafe            ###   ########.fr       */
+/*   Updated: 2019/07/20 18:23:22 by drafe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			ft_mb_chk(int m, char **min_box, int sh_nb, t_crds *all_sh)
 	{
 		x = all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb];
 		y = all_sh[sh_nb].mb_y + all_sh[sh_nb].y[p_nb];
-		if (((x >= m) || (y >= m)) || (min_box[y][x] != '.') || (tmp < 0))
+		if ((tmp < 0) || (((x >= m) || (y >= m)) || (min_box[y][x] != '.')))
 			break ;
 		tmp = x;
 		p_nb++;
@@ -87,7 +87,7 @@ int			ft_plc_sh(int m, char **min_box, int sh_nb, t_crds *all_sh)
 	}
 }
 
-void		ft_rm_sh(char **min_box, int sh_nb, t_crds *all_sh)
+void		ft_rm_sh(char **min_box, int m, int sh_nb, t_crds *all_sh)
 {
 	int		p_nb;
 	int		x;
@@ -102,8 +102,9 @@ void		ft_rm_sh(char **min_box, int sh_nb, t_crds *all_sh)
 	{
 		y = all_sh[sh_nb].mb_y + all_sh[sh_nb].y[p_nb];
 		x = all_sh[sh_nb].mb_x + all_sh[sh_nb].x[p_nb];
-		if (all_sh[sh_nb].sh_let == min_box[y][x])
-			min_box[y][x] = '.';
+		if ((y < m) && (x < m))
+			if (all_sh[sh_nb].sh_let == min_box[y][x])
+				min_box[y][x] = '.';
 		p_nb++;
 	}
 }
