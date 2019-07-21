@@ -47,5 +47,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/08_working_with_arrays.dir/DependInfo.cmake"
+  "CMakeFiles/35_filit_Denis_file_checker.dir/DependInfo.cmake"
   )

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/fjenae/Desktop/17_filit
+# Install script for directory: /Users/fjenae/Desktop/40_filit_Denis_file_checker_working_sample_norm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/fjenae/Desktop/17_filit/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/fjenae/Desktop/40_filit_Denis_file_checker_working_sample_norm/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

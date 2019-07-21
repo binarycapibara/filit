@@ -46,15 +46,12 @@ static void    ft_reposition_coord_neg(t_tetris *sh_coord, int *N)
     int     sh_nb;
     int     p_nb;
     int     num;
-    int     m;
-    int     n;
+
     int     temp;
 
     sh_nb = 0;
     p_nb = 0;
     num = *N;
-    m = 0;
-    n = 0;
 
    while(sh_nb != (num + 1))
    {
@@ -82,12 +79,12 @@ static void    ft_reposition_coord_neg(t_tetris *sh_coord, int *N)
 void    ft_algo(int	*N, t_tetris *sh_coord)
 {
     int     sh_nb;
-    int     i;
-    int     k;
-    int     size;
     char    sequence[*N];
     t_dimensions dimension;
 
+    dimension.size = 2;
+    dimension.N = *N + 1;
+    dimension.box = ft_get_min_box(26);
     ft_memset(sequence, 0, sizeof(sequence));
     sh_nb = 0;
     while (sh_nb <= *N)
@@ -95,56 +92,6 @@ void    ft_algo(int	*N, t_tetris *sh_coord)
         sequence[sh_nb] = sh_coord[sh_nb].litera;
         sh_nb++;
     }
-    sh_nb = 0;
-    printf("\ncheck that sequence contains correct letters initially\n");
-    while (sh_nb <= *N)
-    {
-        printf("%c\n", sequence[sh_nb]);
-        sh_nb++;
-    }
-    sh_nb = 0;
-
-//    sequence [6] = 'A';
-//    sequence [5] = 'B';
-//    sequence [4] = 'C';
-//    sequence [3] = 'D';
-//    sequence [2] = 'E';
-//    sequence [1] = 'F';
-//    sequence [0] = 'G';
-
-    k = *N;
-    printf("\nprint number of elements\n");
-    printf("%d\n", k);
-    while (sh_nb <= *N) {
-        i = 0;
-        printf("\n***vvv***%d***vvv***", sh_nb);
-        while (i < 4) {
-            printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb, i, sh_coord[sh_nb].x[i], i, sh_coord[sh_nb].y[i]);
-            i++;
-        }
-        sh_nb++;
-    }
-    printf("\n-------------------------------------------");
     ft_reposition_coord_neg(sh_coord, N);
-    sh_nb = 0;
-    while (sh_nb <= *N) {
-        i = 0;
-        printf("\n***vvv***%d***vvv***", sh_nb);
-        while (i < 4) {
-            printf("\nlitera[%c]t[%d].x[%d]=%d  y[%d]=%d", sh_coord[sh_nb].litera, sh_nb, i, sh_coord[sh_nb].x[i], i, sh_coord[sh_nb].y[i]);
-            i++;
-        }
-        sh_nb++;
-    }
-
-    printf("\n-------------------------------------------");
-    printf("\n-------------------------------------------");
-    printf("\n-------------------------------------------\n");
-    size = 2;
-    printf("number of elements - [%d]\n", *N);
-    printf("array size - [%d] х [%d]\n", size, size);
-    dimension.size = size;
-    dimension.N = *N + 1;
-    dimension.box = ft_get_min_box(26);
     worker(sh_coord, &dimension, sequence);
 }

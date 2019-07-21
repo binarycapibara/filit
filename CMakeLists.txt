@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.14)
-project(08_working_with_arrays C)
+project(35_filit_Denis_file_checker C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 include_directories(libft)
 
-add_executable(08_working_with_arrays
+add_executable(35_filit_Denis_file_checker
         libft/ft_atoi.c
         libft/ft_bzero.c
         libft/ft_isalnum.c
@@ -69,4 +69,7 @@ add_executable(08_working_with_arrays
         libft/libft.h
         algorithm.c
         fillit.h
-        main.c placement.c)
+        ft_valid.c
+        main.c
+        placement.c
+        ft_save_shape.c)

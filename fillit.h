@@ -34,17 +34,12 @@ typedef struct      s_dimensions
     char        litera;
 }                   t_dimensions;
 
-typedef struct      s_1dot
-{
-    int         x;
-    int         y;
-}                   t_1dot;
-
 void            ft_algo(int	*N, t_tetris *sh_coord);
 int             ft_placement(t_tetris *sh_coord, t_dimensions *dimension, char *sequence, int one_more_figure);
-void            ft_box_print(t_dimensions *d, int size);
 int             ft_attempt_write(t_tetris *sh_coord, t_dimensions *d, char    *sequence);
 char	        **ft_get_min_box(int	size);
 void             worker(t_tetris *sh_coord, t_dimensions *d, char *sequence);
+int			    ft_valid(char *s);
+int			    ft_save_shape(char *s, t_tetris *all_sh);
 
 #endif
