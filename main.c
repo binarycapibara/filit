@@ -136,27 +136,27 @@ int					ft_tetra_read(char *source_f)
 		exit(0);
 	}
 	buff = (char*)ft_strnew(546);
-    if ((bytes = read(fd, buff, 545)) < 0)
+    if ((bytes = read(fd, buff, 545)) <= 0)
     {
-        ft_putstr_fd("error\n", 2);
+        ft_putstr("error\n");
         ft_strdel(&buff);
         exit(0);
     }
 	buff[bytes] = '\0';
     if ((!ft_valid(buff) || ((close(fd)) < 0)))
     {
-        ft_putstr_fd("error\n", 2);
+        ft_putstr("error\n");
         ft_strdel(&buff);
         exit(0);
     }
 	k = ft_save_shape(buff, ptr);
 	N = &k;
 	ft_algo(N, ptr);
-	if ((close(fd)) < 0)
-	{
-		ft_putstr_fd("close error\n", 2);
-		exit(0);
-	}
+//	if ((close(fd)) < 0)
+//	{
+//		ft_putstr_fd("close error\n", 2);
+//		exit(0);
+//	}
 	return (0);
 }
 
@@ -164,7 +164,7 @@ int					main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		ft_putstr_fd("usage: ./fillit source_file\n", 2);
+		ft_putstr("usage: ./fillit source_file\n");
 		exit(1);
 	}
 	ft_tetra_read(argv[1]);

@@ -26,8 +26,8 @@ OBJ = main.o\
 
 SRC = main.c\
 	algorithm.c\
-	placement.c\
-	ft_valid.c\
+    placement.c\
+    ft_valid.c\
 
 all: $(NAME)
 

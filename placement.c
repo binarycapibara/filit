@@ -78,7 +78,6 @@ int     ft_attempt_write(t_tetris *sh_coord, t_dimensions *d, char    *sequence)
         }
         n++;
     }
-    printf("\n");
     return (1);
 }
 
@@ -127,10 +126,10 @@ void         worker(t_tetris *sh_coord, t_dimensions *d, char *sequence)
     {
         while (n != d->size)
         {
-            printf("%c", d->box[m][n]);
+            ft_putchar(d->box[m][n]);
             n++;
         }
-        printf("\n");
+        ft_putchar('\n');
         n = 0;
         m++;
     }
