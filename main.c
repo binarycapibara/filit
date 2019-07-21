@@ -6,16 +6,43 @@
 /*   By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/29 18:09:14 by drafe             #+#    #+#             */
-/*   Updated: 2019/07/07 13:45:42 by fjenae           ###   ########.fr       */
+/*   Updated: 2019/07/08 16:06:01 by fjenae           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "./libft/libft.h"
+#include "fillit.h"
+#include "libft/libft.h"
 #include <fcntl.h>
 #include <stdio.h>
 
-//edit Denis
+//int					ft_find_n(char *s)
+//{
+//    int				shp;
+//    int				p_nb;
+//    int				i;
+//
+//    shp = 0;
+//    p_nb = 0;
+//    i = 0;
+//    while (s[i] != '\0')
+//    {
+//        if (s[i] == '#')
+//            p_nb++;
+//        if (p_nb == 4)
+//        {
+//            shp++;
+//            p_nb = 0;
+//        }
+//        i++;
+//    }
+//    if (shp > 26)
+//    {
+//        ft_putstr_fd("error\n", 2);
+//        exit(0);
+//    }
+//    return (shp);
+//}
+
 
 int					ft_x_c(char *s, int i)
 {
@@ -50,6 +77,7 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 	int				nl_nb;
 	int				sh_nb;
 	int				i;
+	int				tmp;
 
 	i = 0;
 	sh_nb = 0;
@@ -66,45 +94,39 @@ int					ft_save_shape(char *s, t_tetris *all_sh)
 			}
 			else
 			{
-				all_sh[sh_nb].y[p_nb] = all_sh[sh_nb].y[p_nb - 1] + ft_y_c(s, i);
 				all_sh[sh_nb].x[p_nb] = all_sh[sh_nb].x[p_nb - 1] + ft_x_c(s, i);
+				all_sh[sh_nb].y[p_nb] = all_sh[sh_nb].y[p_nb - 1] + ft_y_c(s, i);
 			}
 			p_nb++;
 		}
-		if ((s[i] == '\n') && ((nl_nb++) && ((nl_nb % 5 == 0) && (nl_nb != 0))))
+		if (s[i] == '\n')
 		{
-			sh_nb++;
-			nl_nb = 0;
-			p_nb = 0;
+			nl_nb++;
+			if ((nl_nb % 5 == 0) && (nl_nb != 0))
+			{
+                all_sh[sh_nb].litera = 'A' + sh_nb;
+				sh_nb++;
+				nl_nb = 0;
+				p_nb = 0;
+			}
 		}
 		i++;
 	}
-	return (0);
+	tmp = sh_nb;
+    all_sh[sh_nb].litera = 'A' + sh_nb;
+	return (tmp);
 }
 
-/*
-**	sh_nb = 0;
-** 	while (sh_nb < 19)
-**	{
-**		i = 0;
-**		printf("\n***vvv***%d***vvv***", sh_nb);
-**		while (i < 4)
-**		{
-**			printf("\nt[%d].x[%d]=%d  y[%d]=%d", sh_nb,
-**			i, all_sh[sh_nb].x[i], i, all_sh[sh_nb].y[i]);
-**			i++;
-**		}
-**		sh_nb++;
-**	}
-*/
 
 int					ft_tetra_read(char *source_f)
 {
-	static t_tetris	all_shapes[26];
+	static          t_tetris	all_shapes[26];
 	t_tetris		*ptr;
-	char			*tmp;
+	char			*buff;
 	int				bytes;
 	unsigned int	fd;
+	int				*N;
+	int				k;
 
 	bytes = 0;
 	ptr = all_shapes;
@@ -113,13 +135,23 @@ int					ft_tetra_read(char *source_f)
 		ft_putstr_fd("read error\n", 2);
 		exit(0);
 	}
-	tmp = (char*)ft_strnew(521);
-	bytes = read(fd, tmp, 520);
-	if (bytes < 0)
-		return (-1);
-	tmp[bytes] = '\0';
-
-	ft_save_shape(tmp, ptr);
+	buff = (char*)ft_strnew(546);
+    if ((bytes = read(fd, buff, 545)) < 0)
+    {
+        ft_putstr_fd("error\n", 2);
+        ft_strdel(&buff);
+        exit(0);
+    }
+	buff[bytes] = '\0';
+    if ((!ft_valid(buff) || ((close(fd)) < 0)))
+    {
+        ft_putstr_fd("error\n", 2);
+        ft_strdel(&buff);
+        exit(0);
+    }
+	k = ft_save_shape(buff, ptr);
+	N = &k;
+	ft_algo(N, ptr);
 	if ((close(fd)) < 0)
 	{
 		ft_putstr_fd("close error\n", 2);
@@ -137,6 +169,3 @@ int					main(int argc, char **argv)
 	}
 	ft_tetra_read(argv[1]);
 }
-/*
-**  1 line with 8 chars with Line Feed
-*/

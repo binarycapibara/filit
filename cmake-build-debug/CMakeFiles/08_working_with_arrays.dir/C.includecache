@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/fjenae/Desktop/33_filit_Denis/fillit.h
+fcntl.h
+-
+stdio.h
+-
+libft/libft.h
+/Users/fjenae/Desktop/33_filit_Denis/libft/libft.h
+
+/Users/fjenae/Desktop/33_filit_Denis/libft/libft.h
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+
+/Users/fjenae/Desktop/33_filit_Denis/main.c
+fillit.h
+/Users/fjenae/Desktop/33_filit_Denis/fillit.h
+libft/libft.h
+/Users/fjenae/Desktop/33_filit_Denis/libft/libft.h
+fcntl.h
+-
+stdio.h
+-
+
