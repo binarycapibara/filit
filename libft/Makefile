@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fjenae <fjenae@student.42.fr>              +#+  +:+       +#+         #
+#    By: drafe <drafe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 20:00:16 by drafe             #+#    #+#              #
-#    Updated: 2019/07/08 19:49:55 by fjenae           ###   ########.fr        #
+#    Updated: 2019/07/25 18:01:34 by drafe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = libft.a
 
 HEADERS = libft.h
 
-OBJ = ft_memset.o\
+OBJS = ft_memset.o\
 	ft_bzero.o\
 	ft_memcpy.o\
 	ft_memccpy.o\
@@ -76,9 +76,9 @@ OBJ = ft_memset.o\
 	ft_lstadd.o\
 	ft_lstiter.o\
 	ft_lstmap.o\
-	ft_sqrt.o\
+	ft_sqrt.o
 
-SRC = ft_memset.c\
+SRCS = ft_memset.c\
 	ft_bzero.c\
 	ft_memcpy.c\
 	ft_memccpy.c\
@@ -136,16 +136,18 @@ SRC = ft_memset.c\
 	ft_lstadd.c\
 	ft_lstiter.c\
 	ft_lstmap.c\
-	ft_sqrt.c\
+	ft_sqrt.c
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) -c -I $(HEADERS) $(CFLAGS) $(SRC)
-	ar -rc $(NAME) $(OBJ)
+$(NAME):$(OBJS)
+	ar -rc $(NAME) $(OBJS)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -rf $(OBJ)
+	rm -rf $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
